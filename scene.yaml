@@ -2,7 +2,8 @@
   #sdk_mapzen_api_key: mapzen-UJDfMvY
 
 import:
-    - ../map-assets/refill-style.zip
+    - https://www.nextzen.org/carto/refill-style/10/refill-style.zip
+    #- ../map-assets/refill-style.zip
     - ../map-assets/colorbrewer.yaml
     #- https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
 
