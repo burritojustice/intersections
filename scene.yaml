@@ -2,7 +2,7 @@ global:
   sdk_mapzen_api_key: mapzen-UJDfMvY
 
 import:
-    - https://mapzen.com/carto/refill-style/6/refill-style.yaml
+    - https://nextzen.org/carto/refill-style/10/refill-style.yaml
     - https://s3.amazonaws.com/mapzen-assets/images/blocks/colorbrewer.yaml
     - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
 
@@ -11,20 +11,20 @@ sources:
 
     manhattan_tiger_intersections:
         type: GeoJSON
-        url: https://s3.amazonaws.com/mapzen-assets/images/test/manhattan_tiger_intersections.geojson
+        url: manhattan_tiger_intersections.geojson
 
     manhattan_tiger_voronoi:
         type: GeoJSON
-        url: https://mapzen-assets.s3.amazonaws.com/images/test/manhattan_tiger_voronoi.geojson
+        url: manhattan_tiger_voronoi.geojson
         generate_label_centroids: true
     sf_tiger_points:
         type: GeoJSON
-        # url: https://mapzen-assets.s3.amazonaws.com/images/test/SF_TIGER_intersection_points.geojson
-        url: https://gist.githubusercontent.com/burritojustice/c1b55060efcba94cd1916d561e7b1c74/raw/cc9ad1eb656c12d54bb7d4f4915e3a4a3ff8944e/SF_TIGER_intersection_points.geojson
+        url: SF_TIGER_intersection_points.geojson
+        # url: https://gist.githubusercontent.com/burritojustice/c1b55060efcba94cd1916d561e7b1c74/raw/cc9ad1eb656c12d54bb7d4f4915e3a4a3ff8944e/SF_TIGER_intersection_points.geojson
     sf_tiger_voronoi_color:
         type: GeoJSON
-        # url: https://mapzen-assets.s3.amazonaws.com/images/test/SF_TIGER_intersection_voronoi_colorid.geojson
-        url: https://gist.githubusercontent.com/burritojustice/c1b55060efcba94cd1916d561e7b1c74/raw/cc9ad1eb656c12d54bb7d4f4915e3a4a3ff8944e/SF_TIGER_intersection_voronoi_colorid.geojson
+        url: SF_TIGER_intersection_voronoi_colorid.geojson
+        #url: https://gist.githubusercontent.com/burritojustice/c1b55060efcba94cd1916d561e7b1c74/raw/cc9ad1eb656c12d54bb7d4f4915e3a4a3ff8944e/SF_TIGER_intersection_voronoi_colorid.geojson
         generate_label_centroids: true
 
 styles:
