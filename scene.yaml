@@ -2,7 +2,7 @@ global:
   sdk_mapzen_api_key: mapzen-UJDfMvY
 
 import:
-    - https://nextzen.org/carto/refill-style/10/refill-style.zip
+    - https://www.nextzen.org/carto/refill-style/10/refill-style.zip
     - colorbrewer.yaml
     - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
 
