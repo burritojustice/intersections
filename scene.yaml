@@ -3,7 +3,7 @@
 
 import:
     - ../map-assets/refill-style.zip
-    - colorbrewer.yaml
+    - ../map-assets/colorbrewer.yaml
     #- https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
 
     
