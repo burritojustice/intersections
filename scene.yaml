@@ -1,5 +1,5 @@
-#global:
-  #sdk_mapzen_api_key: mapzen-UJDfMvY
+global:
+  sdk_mapzen_api_key: mapzen-UJDfMvY
 
 import:
     #- https://www.nextzen.org/carto/refill-style/10/refill-style.zip
