@@ -1,0 +1,128 @@
+global:
+  sdk_mapzen_api_key: mapzen-UJDfMvY
+
+import:
+    - https://mapzen.com/carto/refill-style/6/refill-style.yaml
+    - https://s3.amazonaws.com/mapzen-assets/images/blocks/colorbrewer.yaml
+    - https://mapzen-assets.s3.amazonaws.com/resources/demo.yaml
+
+    
+sources:
+
+    manhattan_tiger_intersections:
+        type: GeoJSON
+        url: https://s3.amazonaws.com/mapzen-assets/images/test/manhattan_tiger_intersections.geojson
+
+    manhattan_tiger_voronoi:
+        type: GeoJSON
+        url: https://mapzen-assets.s3.amazonaws.com/images/test/manhattan_tiger_voronoi.geojson
+        generate_label_centroids: true
+    sf_tiger_points:
+        type: GeoJSON
+        # url: https://mapzen-assets.s3.amazonaws.com/images/test/SF_TIGER_intersection_points.geojson
+        url: https://gist.githubusercontent.com/burritojustice/c1b55060efcba94cd1916d561e7b1c74/raw/cc9ad1eb656c12d54bb7d4f4915e3a4a3ff8944e/SF_TIGER_intersection_points.geojson
+    sf_tiger_voronoi_color:
+        type: GeoJSON
+        # url: https://mapzen-assets.s3.amazonaws.com/images/test/SF_TIGER_intersection_voronoi_colorid.geojson
+        url: https://gist.githubusercontent.com/burritojustice/c1b55060efcba94cd1916d561e7b1c74/raw/cc9ad1eb656c12d54bb7d4f4915e3a4a3ff8944e/SF_TIGER_intersection_voronoi_colorid.geojson
+        generate_label_centroids: true
+
+styles:
+    _ontop:
+        base: text
+        #texture: pois
+        blend: overlay
+        blend_order: 3
+    _polygons:
+        base: polygons
+        blend: multiply
+        blend_order: 0
+    _pointsontop:
+        base: points
+        #texture: pois
+        blend_order: 3
+    
+layers:
+    _sf_voronoi_colorid:
+        data: {source: sf_tiger_voronoi_color}
+        draw:
+            lines:
+                color: grey
+                width: [[12,0.5px],[18,2px]]
+                order: 1001
+            _polygons:
+                color: |
+                    function() {                        
+                        var v_color = feature.COLORID;
+                        var color =
+                            v_color = 0 ? global.RdYlGn.d7.d1 :
+                            v_color < 1 ? global.RdYlBu.d7.d2 :
+                            v_color < 2 ? global.RdYlBu.d7.d3 :
+                            v_color < 3 ? global.RdYlBu.d7.d4 :
+                            v_color < 4 ? global.RdYlBu.d7.d5 :
+                            v_color < 5 ? global.RdYlBu.d7.d6 :
+                            global.RdYlBu.d7.d7 ;   
+                        return color;
+                            }
+                order: 1000
+        labels:
+            filter: { label_placement: true, $zoom: {min: 16  }}
+            draw:
+                _ontop:
+                    text_source: intersect
+                    font:
+                        size: 10px
+                        fill: white
+                        stroke:
+                            color: black
+                            width: 2
+
+    _sf_intersections:
+        data: { source: sf_tiger_points}
+        filter: { $zoom: {min: 15 } }
+        draw:
+            points:
+                color: blue
+                size: 5
+
+    _manhattan_voronoi_colorid:
+        data: {source: manhattan_tiger_voronoi}
+        draw:
+            lines:
+                color: grey
+                width: [[12,0.5px],[18,2px]]
+                order: 1001
+            _polygons:
+                color: |
+                    function() {                        
+                        var v_color = feature.COLORID;
+                        var color =
+                            v_color = 0 ? global.YlOrBr.d7.d1 :
+                            v_color < 1 ? global.YlOrBr.d7.d2 :
+                            v_color < 2 ? global.YlOrBr.d7.d3 :
+                            v_color < 3 ? global.YlOrBr.d7.d4 :
+                            v_color < 4 ? global.YlOrBr.d7.d5 :
+                            v_color < 5 ? global.YlOrBr.d7.d6 :
+                            global.YlOrBr.d7.d7 ;   
+                        return color;
+                            }
+                order: 1000
+        labels:
+            filter: { label_placement: true, $zoom: {min: 16  }}
+            draw:
+                _ontop:
+                    text_source: UID
+                    font:
+                        size: 10px
+                        fill: white
+                        stroke:
+                            color: black
+                            width: 2
+    _manhattan_intersections:
+        data: { source: manhattan_tiger_intersections}
+        filter: { $zoom: {min: 15 } }
+        draw:
+            _pointsontop:
+                color: blue
+                size: 5
+
