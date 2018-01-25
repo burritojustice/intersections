@@ -11,7 +11,7 @@ import:
 sources:
 
     mapzen: 
-        url: https://{s}.tiles.nextzen.org/mapzen/vector/v1/512/all/{z}/{x}/{y}.json
+        url: https://{s}.tiles.nextzen.org/mapzen/vector/v1/512/all/{z}/{x}/{y}.mvt
         url_subdomains: ['a', 'b', 'c', 'd']
         url_params: null
 
