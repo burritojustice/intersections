@@ -3,7 +3,7 @@ import:
     #- https://www.nextzen.org/carto/bubble-wrap-style/8/bubble-wrap-style.zip
     #- ../map-assets/refill-style.zip
     - ../map-assets/colorbrewer.yaml
-    - ../map-resources/demo.yaml
+    - ../map-assets/demo.yaml
 
     
 sources:
